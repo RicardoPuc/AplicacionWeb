@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LISTA</title>
+
+</head>
+<body>
+    {% load bootstrap4 %}
+    <button type="button" class="btn btn-success"><a href="{% url 'inicio'%}">SALIR</a></button>
+    <h1>LECCIONES</h1>
+    <table class="table table-borderless">
+        <thead class="table-dark">
+            <tr>
+                <td>ID</td>
+                <td>Leccion</td>
+                <td>Pregunta</td>
+                <td>Respuesta</td>
+                <td>Acciones</td>
+               
+            </tr>
+        </thead>
+        <tbody>
+            {% for pregunta in object_list %}
+            <tr>
+                <td>{{ pregunta.id }}</td>
+                <td>{{ pregunta.leccion }}</td>
+                <td>{{ pregunta.pregunta }}</td>
+                <td>{{ pregunta.repuesta }}</td>
+                <td>{{ pregunta.status }}</td> 
+                
+                <td>
+                <button type="button" class="btn btn-warning"><a href="{% url 'editar_pregunta' pregunta.id %}">Editar</a></button>
+                <buttontype="button" class="btn btn-danger"><a href="{% url 'eliminar_pregunta' pregunta.id %}">Eliminar</a></button>
+                </td>
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+    <button type="button" class="btn btn-success"><a href="{% url 'crear_pregunta'%}">Crear</a></button>
+
+    {% bootstrap_css %}
+</body>
+</html>

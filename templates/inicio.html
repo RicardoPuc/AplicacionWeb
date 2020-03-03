@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Index</title>
+
+  
+   
+</head>
+<body>
+   {# Cargamos la librería #}
+   {% load bootstrap4 %}
+
+   {# CSS Bootstrap #}
+   {% bootstrap_css %}
+  
+
+
+    <nav class="navbar navbar-expand-sm bg-dark">
+
+      <!-- Links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+        <h5>  <a class="nav-link" href="{% url 'listar_curso' %}">Crear Curso</a></h5>
+        </li>
+        <li class="nav-item">
+        <h5>  <a class="nav-link" href="{% url 'listar_leccion' %}">Crear Leccion</a></h5>
+        </li>
+        <li class="nav-item">
+         <h5> <a class="nav-link" href="{% url 'listar_pregunta' %}">Crear Pregunta</a></h5>
+        </li>
+      </ul>
+   
+    </nav>
+  
+    <div class="container">
+      <h1>CURSOS DISPONIBLES</h1>
+      <div class="row">
+
+  
+      
+    <table class="table table-borderless" >
+        <thead class="table-dark">
+            <tr>
+                <td>Nombre</td>
+                <td>Profesor</td>
+                <td>Descripcion</td>
+                <td>Certificacion</td>
+                <td>Acciones</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for estudiante in object_list %}
+            <tr>
+                <td>{{ estudiante.nombre }}</td>
+                <td>{{ estudiante.profesor }}</td>
+                <td>{{ estudiante.descripcion }}</td>
+                <td>{{ estudiante.certificacion }}</td>
+                <td>
+                  <button type="button" class="btn btn-success"><a href="{% url 'tomar_leccion'%}">INICIAR</a></button>
+                 
+                  
+                 </td>
+                
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+    
+  </div>
+</div>
+
+    {% bootstrap_javascript jquery='full' %}
+</body>
+</html>

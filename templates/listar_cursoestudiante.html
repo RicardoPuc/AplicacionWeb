@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LISTA CURSOS</title>
+
+</head>
+<body>
+    <button type="button" class="btn btn-success"><a href="{% url 'inicio'%}">SALIR</a></button>
+    
+    {% load bootstrap4 %}
+
+    <h1>CURSOS</h1>
+    <table >
+        <thead class="table-dark">
+            <tr>
+                <td>Nombre</td>
+                <td>Profesor</td>
+                <td>Descripcion</td>
+                <td>Certificacion</td>
+                <td>Acciones</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for curso in object_list %}
+            <tr>
+                <td>{{ curso.nombre }}</td>
+                <td>{{ curso.profesor }}</td>
+                <td>{{ curso.descripcion }}</td>
+                <td>{{ curso.certificacion }}</td>
+                
+                <td>
+                 <button type="button" class="btn btn-warning"><a href="{% url 'editar_curso' curso.id %}">Acceder</a></button>
+                
+                    <button type="button" class="btn btn-danger"><a href="{% url 'eliminar_curso' curso.id %}">Eliminar</a></button>
+                </td>
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+    <button type="button" class="btn btn-success"><a href="{% url 'crear_curso'%}">Crear</a></button>
+
+<br>
+<br>
+
+    {% bootstrap_css %}
+    
+</body>
+</html>     

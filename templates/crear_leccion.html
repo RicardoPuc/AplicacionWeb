@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CREAR LECCIONES</title>
+</head>
+<body>
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button  type="submit" class="btn btn-success">Crear</button>
+        <button type="button" class="btn btn-danger"><a href="{% url 'listar_leccion'%}">Cancelar</a></button>
+    </form>
+      
+    {% bootstrap_javascript jquery='full' %}
+</body>
+</html>

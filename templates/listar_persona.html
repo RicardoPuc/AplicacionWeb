@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LISTA</title>
+
+</head>
+<body>
+
+    <table>
+        <thead class="table-dark">
+            <tr>
+                <td>ID</td>
+                <td>Nombre</td>
+                <td>Apellido</td>
+                <td>Edad</td>
+                <td>Telefono</td>
+                <td>Acciones</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for persona in object_list %}
+            <tr>
+                <td>{{ persona.id }}</td>
+                <td>{{ persona.nombre }}</td>
+                <td>{{ persona.apellido }}</td>
+                <td>{{ persona.edad }}</td>
+                <td>{{ persona.telefono }}</td>
+                
+                <td>
+                 <button><a href="{% url 'editar_persona' persona.id %}">Editar</a></button>
+                </td>
+                <td>
+                    <button><a href="{% url 'eliminar_persona' persona.id %}">Eliminar</a></button>
+                </td>
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+    <button><a href="{% url 'crear_persona'%}">Crear</a></button>
+
+    
+</body>
+</html>
